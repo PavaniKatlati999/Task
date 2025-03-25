@@ -47,7 +47,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             {/* Hero Section */}
             <section className="mb-12">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-4">Welcome to Our Platform</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-600 mb-4">Welcome to Our Platform</h1>
               <p className="text-gray-600 text-lg mb-8">
                 Discover a world of possibilities with our innovative solutions. We are here to help you achieve your goals.
               </p>
