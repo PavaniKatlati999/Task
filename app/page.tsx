@@ -3,15 +3,15 @@
 import { useState } from "react";
 
 export default function ThreeColumnLayout() {
-  const [isLeftNavVisible, setIsLeftNavVisible] = useState(true);
-  const [isRightNavVisible, setIsRightNavVisible] = useState(true);
+  const [isLeftNavVisible, setLeftNavVisible] = useState(true);
+  const [isRightNavVisible, setRightNavVisible] = useState(true);
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left Navigation */}
       {isLeftNavVisible && (
-        <nav className="w-1/6 bg-gray-800 text-white p-4 transition-all">
-          <h2 className="text-xl font-semibold">App Name</h2>
+        <nav className="w-1/2 lg:w-1/5 xs:w-full bg-gray-800 text-white p-4 transition-all">
+          <h2 className="text-xl font-semibold">Left Nav</h2>
           <ul className="space-y-4 mt-4">
             <li>
               <a
@@ -84,71 +84,65 @@ export default function ThreeColumnLayout() {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 p-4">
-       
-
+      <main
+        className={`flex-1 p-4  transition-all ${
+          isLeftNavVisible ? "md:ml-1" : "ml-0"
+        } ${isRightNavVisible ? "md:mr-1" : "mr-0"}`}
+      >
         <h1 className="text-3xl font-bold mb-4">Welcome to our platform</h1>
         <p className="text-lg">
           Discover a world of possibilities with our innovative solutions. We
           are here to help you achieve your goals.Discover a world of
           possibilities with our innovative solutions. We are here to help you
-          achieve your goals{" "}
+          achieve your goals
         </p>
-
-        <div className="mt-16">
-          {/* Show/Hide Buttons */}
+        <div className="m-4 flex gap-2">
+          {/* Toggle Buttons */}
           <button
-            onClick={() => setIsLeftNavVisible(!isLeftNavVisible)}
-            className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+            onClick={() => setLeftNavVisible(!isLeftNavVisible)}
+            className="bg-blue-500 text-white px-4 py-2 rounded"
           >
             Toggle Left Nav
           </button>
           <button
-            onClick={() => setIsRightNavVisible(!isRightNavVisible)}
+            onClick={() => setRightNavVisible(!isRightNavVisible)}
             className="bg-green-500 text-white px-4 py-2 rounded"
           >
-            Toggle Right Nav
+            {isRightNavVisible ? "Hide Info" : "View Info"}
           </button>
         </div>
       </main>
 
       {/* Right Navigation */}
       {isRightNavVisible && (
-        <nav className="w-1/6 bg-gray-900 text-white p-5 shadow-lg rounded-lg transition-all">
-          <div className="space-y-6 overflow-y-auto">
-            {/* Quick Links Section */}
-            <div className="bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700 backdrop-blur-md">
-              <h3 className="text-lg font-bold text-gray-200 mb-3">
-                Quick Links
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-                  >
-                    Support
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-                  >
-                    FAQ
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <nav className="w-1/2 lg:w-1/5 xs:w-full bg-gray-800 text-white p-4 transition-all">
+          <h3 className="text-lg font-bold text-gray-200 mb-3">Quick Links</h3>
+          <ul className="space-y-3">
+            <li>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
+              >
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
+              >
+                Support
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
+              >
+                FAQ
+              </a>
+            </li>
+          </ul>
         </nav>
       )}
     </div>
