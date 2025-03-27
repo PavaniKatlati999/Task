@@ -2,25 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { SidebarOpen } from "lucide-react";
 
 export default function Task() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isChatInfoOpen, setChatInfoOpen] = useState(false);
   const [name,setName] = useState('John Doe')
-
-  const messages = {
-    "John Doe": [
-      { text: "Hey, how are you?", sender: "other" },
-      { text: "I'm good! How about you?", sender: "self" },
-      { text: "Let's catch up later!", sender: "other" }
-    ],
-    "Jane Smith": [
-      { text: "Hello!", sender: "other" },
-      { text: "Hey, long time no see!", sender: "self" },
-      { text: "We should meet soon!", sender: "other" }
-    ]
-  };
+  
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -110,10 +97,10 @@ export default function Task() {
             Hey, how are you?
           </div>
           <div className="self-end bg-blue-500 text-white p-3 rounded-lg max-w-xs ml-auto">
-            I'm good! How about you?
+            I am good! How about you?
           </div>
           <div className="self-start bg-gray-200 p-3 rounded-lg max-w-xs">
-            Let's catch up later!
+            Lets catch up later!
           </div>
         </div>
 
