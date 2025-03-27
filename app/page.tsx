@@ -8,7 +8,6 @@ export default function Task() {
   const [isChatInfoOpen, setChatInfoOpen] = useState(false);
   const [name,setName] = useState('John Doe')
   
-
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left Sidebar (Chat List) */}
