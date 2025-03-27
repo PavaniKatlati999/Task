@@ -81,11 +81,9 @@ export default function Task() {
           </div>
 
           <div onClick={() => setChatInfoOpen(!isChatInfoOpen)}>
-            <Image
-              src={require("./profile.jpg")}
-              className="h-[30] w-[30] rounded-full"
-              alt="loading"
-            />
+           
+            <Image src="/profile.jpg" width={30} height={30} className="rounded-full" alt="Profile Image" />
+
           </div>
           <h1 className="text-lg font-bold">Chat with {name}</h1>
         </div>
@@ -131,11 +129,9 @@ export default function Task() {
           </div>
           <ul className="space-y-3">
             <div className="flex justify-center">
-              <Image
-                src={require("./profile.jpg")}
-                className="h-30 w-30 rounded-full"
-                alt="loading"
-              />
+             
+              <Image src="/profile.jpg" width={30} height={30} className="rounded-full" alt="Profile Image" />
+
             </div>
             <p className="text-center">{name}</p>
             <li className="p-3 bg-gray-800 rounded-lg">Media, links & docs</li>
