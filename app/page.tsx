@@ -1,149 +1,162 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { SidebarOpen } from "lucide-react";
 
-export default function ThreeColumnLayout() {
-  const [isLeftNavVisible, setLeftNavVisible] = useState(true);
-  const [isRightNavVisible, setRightNavVisible] = useState(true);
+export default function WhatsAppWebUI() {
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isChatInfoOpen, setChatInfoOpen] = useState(false);
+  const [name,setName] = useState('John Doe')
+
+  const messages = {
+    "John Doe": [
+      { text: "Hey, how are you?", sender: "other" },
+      { text: "I'm good! How about you?", sender: "self" },
+      { text: "Let's catch up later!", sender: "other" }
+    ],
+    "Jane Smith": [
+      { text: "Hello!", sender: "other" },
+      { text: "Hey, long time no see!", sender: "self" },
+      { text: "We should meet soon!", sender: "other" }
+    ]
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Left Navigation */}
-      {isLeftNavVisible && (
-        <nav className="w-1/2 lg:w-1/5 xs:w-full bg-gray-800 text-white p-4 transition-all">
-          <h2 className="text-xl font-semibold">Left Nav</h2>
-          <ul className="space-y-4 mt-4">
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-gray-300 hover:bg-gray-700 hover:text-white"
+      {/* Left Sidebar (Chat List) */}
+      {isSidebarOpen && (
+        <aside className="w-1/4 min-w-[150px] lg:min-w-[300px] bg-gray-900 text-white p-4 transition-all">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl text-center font-semibold">Chats</h2>
+            <div className="lg:hidden">
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="text-gray-400 hover:text-white transition"
               >
-                <svg
-                  className="w-5 h-5 text-gray-400 group-hover:text-white transition"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 9l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                  ></path>
-                </svg>
-                <span className="font-medium">Home</span>
-              </a>
+                ✖
+              </button>
+            </div>
+          </div>
+          <ul className="space-y-3">
+            <li
+              className="p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700"
+              onClick={() => setName("John Doe")}
+            >
+              John Doe
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-                <svg
-                  className="w-5 h-5 text-gray-400 group-hover:text-white transition"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 17v-4M15 17v-4M12 21V11m-7 0h14"
-                  ></path>
-                </svg>
-                <span className="font-medium">Analytics</span>
-              </a>
+            <li
+              className="p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700"
+              onClick={() => setName("Jane Smith")}
+            >
+              Jane Smith
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-                <svg
-                  className="w-5 h-5 text-gray-400 group-hover:text-white transition"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6h4m-2 12v2m-4-2a4 4 0 018 0m-8 0H4m12 0h4M4 10a4 4 0 018 0m8 0a4 4 0 00-8 0"
-                  ></path>
-                </svg>
-                <span className="font-medium">Settings</span>
-              </a>
+            <li
+              className="p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700"
+              onClick={() => setName("Alex Johnson")}
+            >
+              Alex Johnson
+            </li>
+            <li
+              className="p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700"
+              onClick={() => setName("John Sean")}
+            >
+              John Sean
+            </li>
+            <li
+              className="p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-700"
+              onClick={() => setName("Smith Gold")}
+            >
+              Smith Gold
             </li>
           </ul>
-        </nav>
+        </aside>
       )}
 
-      {/* Main Content */}
-      <main
-        className={`flex-1 p-4  transition-all ${
-          isLeftNavVisible ? "md:ml-1" : "ml-0"
-        } ${isRightNavVisible ? "md:mr-1" : "mr-0"}`}
-      >
-        <h1 className="text-3xl font-bold mb-4">Welcome to our platform</h1>
-        <p className="text-lg">
-          Discover a world of possibilities with our innovative solutions. We
-          are here to help you achieve your goals.Discover a world of
-          possibilities with our innovative solutions. We are here to help you
-          achieve your goals
-        </p>
-        <div className="m-4 flex gap-2">
-          {/* Toggle Buttons */}
-          <button
-            onClick={() => setLeftNavVisible(!isLeftNavVisible)}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Toggle Left Nav
-          </button>
-          <button
-            onClick={() => setRightNavVisible(!isRightNavVisible)}
-            className="bg-green-500 text-white px-4 py-2 rounded"
-          >
-            {isRightNavVisible ? "Hide Info" : "View Info"}
+      {/* Main Chat Area */}
+      <main className="flex-1 flex flex-col bg-white border-l border-r">
+        {/* Header */}
+        <div className="flex justify-start gap-4 items-center p-4 border-b bg-gray-100">
+          <div className="lg:hidden" onClick={() => setSidebarOpen(true)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6 cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </div>
+
+          <div onClick={() => setChatInfoOpen(!isChatInfoOpen)}>
+            <Image
+              src={require("../public/profile.jpg")}
+              className="h-[30] w-[30] rounded-full"
+              alt="loading"
+            />
+          </div>
+          <h1 className="text-lg font-bold">Chat with {name}</h1>
+        </div>
+
+        {/* Chat Messages */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div className="self-start bg-gray-200 p-3 rounded-lg max-w-xs">
+            Hey, how are you?
+          </div>
+          <div className="self-end bg-blue-500 text-white p-3 rounded-lg max-w-xs ml-auto">
+            I'm good! How about you?
+          </div>
+          <div className="self-start bg-gray-200 p-3 rounded-lg max-w-xs">
+            Let's catch up later!
+          </div>
+        </div>
+
+        {/* Message Input */}
+        <div className="p-4 border-t bg-gray-100 flex items-center">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            className="flex-1 px-4 py-2 border rounded-lg"
+          />
+          <button className="ml-2 bg-green-500 text-white px-4 py-2 rounded-lg">
+            Send
           </button>
         </div>
       </main>
 
-      {/* Right Navigation */}
-      {isRightNavVisible && (
-        <nav className="w-1/2 lg:w-1/5 xs:w-full bg-gray-800 text-white p-4 transition-all">
-          <h3 className="text-lg font-bold text-gray-200 mb-3">Quick Links</h3>
+      {/* Right Sidebar (Chat Info) */}
+      {isChatInfoOpen && (
+        <aside className="w-1/4 min-w-[300px] bg-gray-900 text-white p-4 transition-all">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold">Chat Info</h2>
+
+            <button
+              onClick={() => setChatInfoOpen(false)}
+              className="text-gray-400 hover:text-white transition"
+            >
+              ✖
+            </button>
+          </div>
           <ul className="space-y-3">
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-              >
-                Documentation
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-              >
-                Support
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-transform transform hover:translate-x-1"
-              >
-                FAQ
-              </a>
-            </li>
+            <div className="flex justify-center">
+              <Image
+                src={require("../public/profile.jpg")}
+                className="h-30 w-30 rounded-full"
+                alt="loading"
+              />
+            </div>
+            <p className="text-center">{name}</p>
+            <li className="p-3 bg-gray-800 rounded-lg">Media, links & docs</li>
+            <li className="p-3 bg-gray-800 rounded-lg">Mute Notifications</li>
+            <li className="p-3 bg-gray-800 rounded-lg">Delete Chat</li>
           </ul>
-        </nav>
+        </aside>
       )}
     </div>
   );
