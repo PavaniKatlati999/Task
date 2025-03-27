@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { SidebarOpen } from "lucide-react";
 
-export default function WhatsAppWebUI() {
+export default function Task() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isChatInfoOpen, setChatInfoOpen] = useState(false);
   const [name,setName] = useState('John Doe')
