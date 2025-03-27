@@ -96,7 +96,7 @@ export default function WhatsAppWebUI() {
 
           <div onClick={() => setChatInfoOpen(!isChatInfoOpen)}>
             <Image
-              src={require("../public/profile.jpg")}
+              src={require("./profile.jpg")}
               className="h-[30] w-[30] rounded-full"
               alt="loading"
             />
@@ -146,7 +146,7 @@ export default function WhatsAppWebUI() {
           <ul className="space-y-3">
             <div className="flex justify-center">
               <Image
-                src={require("../public/profile.jpg")}
+                src={require("./profile.jpg")}
                 className="h-30 w-30 rounded-full"
                 alt="loading"
               />
